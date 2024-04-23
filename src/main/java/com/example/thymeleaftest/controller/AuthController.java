@@ -18,6 +18,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -68,16 +69,19 @@ public class AuthController {
 
     @PostMapping("/login")
     public String login(@ModelAttribute LoginDto loginRequest, Model model, HttpServletResponse response){
+        UserDetails userDetails = userDetailsService.loadUserByUsername(loginRequest.getUsername());
+
         Authentication authentication =
                 authenticationManager.authenticate(
                         new UsernamePasswordAuthenticationToken(
                                 loginRequest.getUsername(),
-                                loginRequest.getPassword()
+                                loginRequest.getPassword(),
+                                userDetails.getAuthorities()
                         )
                 );
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
-//        response.setHeader("Authorization", jwtTokenProvider.generateToken(authentication));
+        response.setHeader("Authorization", jwtTokenProvider.generateToken(authentication));
         return "redirect:/home";
 
 

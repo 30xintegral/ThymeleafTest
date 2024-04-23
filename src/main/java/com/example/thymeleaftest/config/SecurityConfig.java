@@ -75,14 +75,17 @@ public class SecurityConfig {
               return corsConfiguration;
             }))
             .authorizeHttpRequests(auth -> auth
-              .requestMatchers("/auth/**").permitAll()
+                            .requestMatchers("/home/**").authenticated()
+                            .requestMatchers("/auth/**").permitAll()
 //              .requestMatchers("/admin/**").hasAuthority("ADMIN")
-              .anyRequest().authenticated()
+                            .anyRequest().authenticated()
             )
-            .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .formLogin(form -> form.loginPage("/auth/login").defaultSuccessUrl("/home", true).loginProcessingUrl("/auth/login").permitAll())
+            .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))//bunu always qoymaq lazimdi eger stateless tokenle islemirikse
             .httpBasic(basic -> basic.authenticationEntryPoint(jwtAuthenticationEntryPoint))
             .exceptionHandling(Customizer.withDefaults())
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+      ;
 
     return http.build();
   }
