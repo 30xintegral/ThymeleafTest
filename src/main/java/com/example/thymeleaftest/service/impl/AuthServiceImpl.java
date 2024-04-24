@@ -1,10 +1,11 @@
-package com.example.thymeleaftest.service;
+package com.example.thymeleaftest.service.impl;
 
 
 import com.example.thymeleaftest.model.Role;
 import com.example.thymeleaftest.model.User;
 import com.example.thymeleaftest.model.request.RegisterDto;
 import com.example.thymeleaftest.repository.UserRepository;
+import com.example.thymeleaftest.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

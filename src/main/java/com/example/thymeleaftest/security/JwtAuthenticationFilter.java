@@ -1,7 +1,7 @@
 package com.example.thymeleaftest.security;
 
 
-import com.example.thymeleaftest.service.CustomUserDetailsService;
+import com.example.thymeleaftest.service.impl.CustomUserDetailsService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

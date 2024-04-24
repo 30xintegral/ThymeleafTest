@@ -1,19 +1,14 @@
 package com.example.thymeleaftest.controller;
 
-import com.example.thymeleaftest.model.User;
 import com.example.thymeleaftest.model.request.LoginDto;
 import com.example.thymeleaftest.model.request.RegisterDto;
 import com.example.thymeleaftest.repository.UserRepository;
 import com.example.thymeleaftest.security.JwtTokenProvider;
 import com.example.thymeleaftest.service.AuthService;
-import com.example.thymeleaftest.service.CustomUserDetailsService;
+import com.example.thymeleaftest.service.impl.CustomUserDetailsService;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.Banner;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -25,7 +20,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/auth")

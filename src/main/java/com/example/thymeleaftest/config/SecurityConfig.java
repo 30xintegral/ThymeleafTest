@@ -3,7 +3,7 @@ package com.example.thymeleaftest.config;
 
 import com.example.thymeleaftest.security.JwtAuthenticationEntryPoint;
 import com.example.thymeleaftest.security.JwtAuthenticationFilter;
-import com.example.thymeleaftest.service.CustomUserDetailsService;
+import com.example.thymeleaftest.service.impl.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

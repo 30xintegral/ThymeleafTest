@@ -1,4 +1,4 @@
-package com.example.thymeleaftest.service;
+package com.example.thymeleaftest.service.impl;
 
 
 import com.example.thymeleaftest.model.User;
